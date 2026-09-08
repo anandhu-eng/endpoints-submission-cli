@@ -16,9 +16,11 @@ Install::
 
    pip install endpoints-submission-cli
 
-Run against a submission directory::
+Check a submission directory::
 
-   endpoints-submission-cli check-submission /path/to/submission
+   from submission_checker import SubmissionChecker
+
+   report = SubmissionChecker("/path/to/submission").run()
 
 Indices and tables
 ------------------

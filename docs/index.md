@@ -1,19 +1,16 @@
-# Endpoints Submission Tools
+# endpoints-submission-cli
 
-Documentation for `endpoints-submission-cli`, the MLCommons command-line tool
-for MLPerf Endpoints benchmark submissions:
-
-| Command | What it does |
-|---|---|
-| **`endpoints-submission-cli runs`** | Registers benchmark runs from a local result folder and manages them. |
-| **`endpoints-submission-cli submissions`** | Assembles submission packages, runs compliance checks, uploads bundles and opens GitHub pull requests via the PRISM Submission API. |
-| **`endpoints-submission-cli check-submission`** | Validates a submission folder against the §9.1 automated compliance rules, before or after upload. |
+`endpoints-submission-cli` is the command-line tool for managing MLPerf
+Endpoints benchmark runs and rolling submissions against the PRISM Submission
+API. It handles the full lifecycle: registering benchmark runs, assembling
+submission packages, running compliance checks, uploading bundles, and creating
+GitHub pull requests — all in a single command.
 
 ---
 
 ## Install
 
-Python 3.10 or later is required.
+Requires Python 3.10 or later.
 
 ```bash
 pip install endpoints-submission-cli
@@ -27,9 +24,8 @@ endpoints-submission-cli --version
 
 ## Authenticate
 
-Every `endpoints-submission-cli` command needs a PRISM API token in `mlc_…`
-format, and the submission commands additionally need the
-[`gh` CLI](https://cli.github.com/):
+Every command needs a PRISM API token in `mlc_…` format, and the submission
+commands additionally need the [`gh` CLI](https://cli.github.com/):
 
 ```bash
 export PRISM_USER_API_TOKEN=mlc_your_token_here
@@ -48,9 +44,17 @@ endpoints-submission-cli submissions create \
   --division standardized \
   --availability available \
   --run-ids d5d9873e-5eca-4f8d-a487-4be1cb8b440c
+# → Submission created: a1b2c3d4-…
+# → PR: https://github.com/MLCommons-Systems/…/pull/42
 ```
 
-See [Getting started](endpoints-cli/getting-started.md) for the full walkthrough.
+`submissions create` assembles the submission folder, runs the compliance
+checks and aborts if any of them fail, uploads the bundle, and opens the pull
+request. Add `--dry-run` to stop after the checks and inspect the folder
+without submitting.
+
+See [Getting started](endpoints-cli/getting-started.md) for the full
+walkthrough.
 
 ---
 
@@ -58,14 +62,12 @@ See [Getting started](endpoints-cli/getting-started.md) for the full walkthrough
 
 | Page | Description |
 |---|---|
-| [endpoints-submission-cli overview](endpoints-cli/README.md) | What the CLI does and the full command tree |
 | [Getting started](endpoints-cli/getting-started.md) | Install, configure and authenticate |
 | [Run commands](endpoints-cli/usage/runs.md) | Every `runs` subcommand with flags and examples |
 | [Submission commands](endpoints-cli/usage/submissions.md) | Every `submissions` subcommand with flags and examples |
 | [CLI to API mapping](endpoints-cli/reference/api-mapping.md) | Which HTTP endpoint each command calls |
 | [Architecture](endpoints-cli/reference/architecture.md) | Module map and command flow diagrams |
 | [Complete reference](endpoints-submission-cli.md) | The combined single-page CLI reference |
-| [Submission checker](submission-checker.md) | Compliance rules, folder layout and programmatic API |
 | [Contributing](contributing.md) | How to contribute and the CLA process |
 
 ---
@@ -81,13 +83,18 @@ endpoints-submission-cli
 │   ├── delete      Delete a run and its archive
 │   ├── pin         Pin a run (prevent expiry)
 │   └── unpin       Restore normal expiry
-├── submissions
-│   ├── list        List all submissions
-│   ├── create      Create a submission from runs (full pipeline)
-│   ├── get         Fetch submission details
-│   ├── update      Update run list or metadata
-│   ├── withdraw    Withdraw a submission
-│   ├── add-run     Add a run to an existing submission
-│   └── remove-run  Remove a run from a submission
-└── check-submission  Run the compliance checker on a submission folder
+└── submissions
+    ├── list        List all submissions
+    ├── create      Create a submission from runs (full pipeline)
+    ├── get         Fetch submission details
+    ├── update      Update run list or metadata
+    ├── withdraw    Withdraw a submission
+    ├── add-run     Add a run to an existing submission
+    └── remove-run  Remove a run from a submission
+```
+
+Use `--help` on any command for full flag details:
+
+```bash
+endpoints-submission-cli submissions create --help
 ```

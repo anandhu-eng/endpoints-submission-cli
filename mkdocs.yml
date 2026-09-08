@@ -1,7 +1,7 @@
 site_name: Endpoints Submission CLI
 site_description: >-
-  Documentation for the MLCommons endpoints-submission-cli and submission-checker
-  tools for managing MLPerf Endpoints benchmark runs and rolling submissions.
+  Documentation for endpoints-submission-cli, the MLCommons command-line tool
+  for managing MLPerf Endpoints benchmark runs and rolling submissions.
 site_url: https://anandhu-eng.github.io/endpoints-submission-cli/
 site_author: MLCommons
 
@@ -12,8 +12,8 @@ edit_uri: edit/main/docs/
 docs_dir: docs
 site_dir: site
 
-# The Sphinx sources for the submission-checker API reference live in the same
-# directory; they are not part of the MkDocs site.
+# The Sphinx API-reference sources live in the same directory; they are not
+# part of the MkDocs site.
 exclude_docs: |
   conf.py
   *.rst
@@ -85,17 +85,14 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - endpoints-submission-cli:
-      - endpoints-cli/README.md
-      - Getting started: endpoints-cli/getting-started.md
-      - Usage:
-          - Run commands: endpoints-cli/usage/runs.md
-          - Submission commands: endpoints-cli/usage/submissions.md
-      - Reference:
-          - CLI to API mapping: endpoints-cli/reference/api-mapping.md
-          - Architecture: endpoints-cli/reference/architecture.md
+  - Getting started: endpoints-cli/getting-started.md
+  - Usage:
+      - Run commands: endpoints-cli/usage/runs.md
+      - Submission commands: endpoints-cli/usage/submissions.md
+  - Reference:
+      - CLI to API mapping: endpoints-cli/reference/api-mapping.md
+      - Architecture: endpoints-cli/reference/architecture.md
       - Complete reference: endpoints-submission-cli.md
-  - submission-checker: submission-checker.md
   - Project:
       - Contributing: contributing.md
       - License: license.md
