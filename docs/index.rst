@@ -14,11 +14,11 @@ Quickstart
 
 Install::
 
-   uv pip install -e ".[dev,docs]"
+   pip install endpoints-submission-cli
 
 Run against a submission directory::
 
-   submission-checker check /path/to/submission
+   endpoints-submission-cli check-submission /path/to/submission
 
 Indices and tables
 ------------------

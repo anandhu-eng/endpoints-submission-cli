@@ -1,25 +1,28 @@
 # Endpoints Submission Tools
 
-Documentation for the MLCommons Python package that provides two command-line
-tools for MLPerf Endpoints benchmark submissions:
+Documentation for `endpoints-submission-cli`, the MLCommons command-line tool
+for MLPerf Endpoints benchmark submissions:
 
-| Tool | What it does |
+| Command | What it does |
 |---|---|
-| **`endpoints-submission-cli`** | Registers benchmark runs, assembles submission packages, runs compliance checks, uploads bundles and opens GitHub pull requests via the PRISM Submission API. |
-| **`submission-checker`** | Validates a submission folder against the §9.1 automated compliance rules, before or after upload. |
+| **`endpoints-submission-cli runs`** | Registers benchmark runs from a local result folder and manages them. |
+| **`endpoints-submission-cli submissions`** | Assembles submission packages, runs compliance checks, uploads bundles and opens GitHub pull requests via the PRISM Submission API. |
+| **`endpoints-submission-cli check-submission`** | Validates a submission folder against the §9.1 automated compliance rules, before or after upload. |
 
 ---
 
 ## Install
 
+Python 3.10 or later is required.
+
 ```bash
 pip install endpoints-submission-cli
 ```
 
-From source, with [uv](https://github.com/astral-sh/uv):
+Check it worked:
 
 ```bash
-uv sync --extra dev
+endpoints-submission-cli --version
 ```
 
 ## Authenticate
@@ -62,7 +65,7 @@ See [Getting started](endpoints-cli/getting-started.md) for the full walkthrough
 | [CLI to API mapping](endpoints-cli/reference/api-mapping.md) | Which HTTP endpoint each command calls |
 | [Architecture](endpoints-cli/reference/architecture.md) | Module map and command flow diagrams |
 | [Complete reference](endpoints-submission-cli.md) | The combined single-page CLI reference |
-| [submission-checker](submission-checker.md) | Compliance rules, folder layout and programmatic API |
+| [Submission checker](submission-checker.md) | Compliance rules, folder layout and programmatic API |
 | [Contributing](contributing.md) | How to contribute and the CLA process |
 
 ---
@@ -78,12 +81,13 @@ endpoints-submission-cli
 │   ├── delete      Delete a run and its archive
 │   ├── pin         Pin a run (prevent expiry)
 │   └── unpin       Restore normal expiry
-└── submissions
-    ├── list        List all submissions
-    ├── create      Create a submission from runs (full pipeline)
-    ├── get         Fetch submission details
-    ├── update      Update run list or metadata
-    ├── withdraw    Withdraw a submission
-    ├── add-run     Add a run to an existing submission
-    └── remove-run  Remove a run from a submission
+├── submissions
+│   ├── list        List all submissions
+│   ├── create      Create a submission from runs (full pipeline)
+│   ├── get         Fetch submission details
+│   ├── update      Update run list or metadata
+│   ├── withdraw    Withdraw a submission
+│   ├── add-run     Add a run to an existing submission
+│   └── remove-run  Remove a run from a submission
+└── check-submission  Run the compliance checker on a submission folder
 ```

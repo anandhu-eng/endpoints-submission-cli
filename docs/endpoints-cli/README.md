@@ -8,7 +8,7 @@
 
 ```bash
 # Install
-pip install -e ".[dev]"
+pip install endpoints-submission-cli
 
 # Authenticate
 export PRISM_USER_API_TOKEN=mlc_your_token_here
@@ -34,6 +34,7 @@ endpoints-submission-cli submissions create \
 | [Usage: submissions](usage/submissions.md) | All submission commands with flags and examples |
 | [API mapping](reference/api-mapping.md) | CLI command → HTTP endpoint reference |
 | [Architecture](reference/architecture.md) | Module map and command flow diagrams |
+| [Submission checker](../submission-checker.md) | Compliance rules, folder layout and programmatic API |
 
 The legacy combined reference is also available at [../endpoints-submission-cli.md](../endpoints-submission-cli.md).
 
@@ -50,12 +51,13 @@ endpoints-submission-cli
 │   ├── delete      Delete a run and its archive
 │   ├── pin         Pin a run (prevent expiry)
 │   └── unpin       Restore normal expiry
-└── submissions
-    ├── list        List all submissions
-    ├── create      Create a submission from runs (full pipeline)
-    ├── get         Fetch submission details
-    ├── update      Update run list or metadata
-    ├── withdraw    Withdraw a submission
-    ├── add-run     Add a run to an existing submission
-    └── remove-run  Remove a run from a submission
+├── submissions
+│   ├── list        List all submissions
+│   ├── create      Create a submission from runs (full pipeline)
+│   ├── get         Fetch submission details
+│   ├── update      Update run list or metadata
+│   ├── withdraw    Withdraw a submission
+│   ├── add-run     Add a run to an existing submission
+│   └── remove-run  Remove a run from a submission
+└── check-submission  Run the compliance checker on a submission folder
 ```

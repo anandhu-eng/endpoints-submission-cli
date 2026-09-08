@@ -27,7 +27,6 @@ submissions against the PRISM Submission API.
 6. [Environment variable reference](#environment-variable-reference)
 7. [Exit codes](#exit-codes)
 8. [Run folder layout](#run-folder-layout)
-9. [Development](#development)
 
 ---
 
@@ -35,23 +34,14 @@ submissions against the PRISM Submission API.
 
 **Requires Python 3.10+.**
 
-Install into a virtual environment (recommended):
-
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e ".[dev]"
-```
-
-Or with [uv](https://github.com/astral-sh/uv):
-
-```bash
-uv sync --extra dev
+pip install endpoints-submission-cli
 ```
 
 Verify the installation:
 
 ```bash
+endpoints-submission-cli --version
 endpoints-submission-cli --help
 ```
 
@@ -575,26 +565,4 @@ registered:
             └── accuracy/
                 ├── accuracy.txt
                 └── accuracy_result.json
-```
-
----
-
-## Development
-
-```bash
-# Install with dev dependencies
-pip install -e ".[dev]"
-
-# Run unit tests
-pytest tests/endpoints_submission_cli/ -m unit
-
-# Run with coverage
-pytest tests/endpoints_submission_cli/ -m unit \
-  --cov=src/endpoints_submission_cli --cov-report=term-missing
-
-# Lint
-ruff check src/endpoints_submission_cli/ tests/endpoints_submission_cli/
-
-# Integration tests (requires a running API at http://localhost:8080)
-pytest tests/endpoints_submission_cli/ -m integration
 ```

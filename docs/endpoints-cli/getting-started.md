@@ -8,18 +8,10 @@
 
 ## Installation
 
-**With pip (editable install from source):**
+Install the published package from PyPI:
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -e ".[dev]"
-```
-
-**With [uv](https://github.com/astral-sh/uv):**
-
-```bash
-uv sync --extra dev
+pip install endpoints-submission-cli
 ```
 
 Verify:
@@ -27,6 +19,12 @@ Verify:
 ```bash
 endpoints-submission-cli --version
 endpoints-submission-cli --help
+```
+
+To upgrade to the latest release:
+
+```bash
+pip install --upgrade endpoints-submission-cli
 ```
 
 ---
