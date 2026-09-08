@@ -60,23 +60,6 @@ gh auth login
 
 ---
 
-## Configuration
-
-| Environment variable | Default | Description |
-|---|---|---|
-| `PRISM_USER_API_TOKEN` | — | API key. Required unless `--token` is passed. |
-| `MLPERF_API_BASE_URL` | `https://api.mlcommons.org` | Base URL of the PRISM Submission API. Override only for dev/staging environments. |
-| `MLPERF_SUBMISSION_REPO` | `MLCommons-Systems/test-endpoints-submission-repo` | Target GitHub repository for submission PRs (`owner/repo` format). |
-
-Add to your shell profile for a persistent setup:
-
-```bash
-export PRISM_USER_API_TOKEN=mlc_your_token_here
-export MLPERF_SUBMISSION_REPO=MLCommons-Systems/endpoints-submission-repo
-```
-
----
-
 ## First command
 
 List your runs to verify connectivity and authentication:
