@@ -218,40 +218,6 @@ endpoints-submission-cli submissions update \
 
 Providing no flags prints a warning and makes no API call.
 
-### When `--run-ids` is provided (full rebuild)
-
-The command runs the full rebuild pipeline:
-
-1. Check GitHub prerequisites (`gh` installed and authenticated).
-2. `GET /submissions/{id}` — fetch current run list, division, and PR number.
-3. Log added/removed runs.
-4. `PATCH /submissions/{id}` with new `run_ids` (and any metadata fields) in a single call.
-5. Download all desired run archives (with progress bar).
-6. Assemble submission folder and run the Submission Checker — rollback on errors.
-7. Clone the submission repository, check out the existing PR branch, and apply the surgical merge — rollback on errors.
-8. Upload the merged bundle to blob storage (`POST /submissions/{id}/archive`) — rollback on errors.
-9. Push the merged branch to the GitHub PR.
-
-**Rollback:** if any step 5–8 fails after the DB PATCH, the run list is automatically restored to its original value (`PATCH /submissions/{id}` with `original_run_ids`). 
-
-**GitHub PR branch file update strategy:** The CLI clones the submission repository and checks out the existing PR branch. It then compares the fresh build against what is already on the branch and makes per-directory decisions — only generated content is overwritten; files that may have been manually edited by reviewers are preserved:
-
-| Path | Action |
-|---|---|
-| `points/` | Replaced entirely from the fresh build. |
-| `accuracy/` | Replaced entirely from the fresh build. |
-| `results/<point>/mlperf_endpoints_log_*.json` | Replaced from the fresh build. |
-| `results/<point>/system_desc.json` | Preserved from the PR branch. Seeded from the fresh build only for points not yet on the branch. |
-| Point dirs in `results/` removed from the fresh build | Deleted from the PR branch. |
-| `systems/` | Preserved from the PR branch. Seeded from the fresh build only if the directory does not yet exist on the branch. |
-| `src/`, `documentation/` | Preserved from the PR branch. |
-
-> **Blob storage and GitHub PR branch content:** Both destinations receive the merged result — the fresh build with reviewer-edited files (`system_desc.json`, `systems/`) preserved from the PR branch. Blob storage and the GitHub PR branch always contain identical content.
-
-### When only metadata flags are provided (DB-only PATCH)
-
-No download or rebuild. A single `PATCH /submissions/{id}` is sent with only the specified fields.
-
 **Example:**
 
 ```bash
