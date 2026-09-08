@@ -62,11 +62,9 @@ walkthrough.
 
 | Page | Description |
 |---|---|
-| [Getting started](endpoints-cli/getting-started.md) | Install, configure and authenticate |
+| [Getting started](endpoints-cli/getting-started.md) | Install, authenticate and run your first command |
 | [Run commands](endpoints-cli/usage/runs.md) | Every `runs` subcommand with flags and examples |
 | [Submission commands](endpoints-cli/usage/submissions.md) | Every `submissions` subcommand with flags and examples |
-| [Complete reference](endpoints-submission-cli.md) | The combined single-page CLI reference |
-| [Contributing](contributing.md) | How to contribute and the CLA process |
 
 ---
 

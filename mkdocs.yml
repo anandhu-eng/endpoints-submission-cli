@@ -22,6 +22,8 @@ exclude_docs: |
 
 theme:
   name: material
+  # Vendored from mlcommons/inference: docs/img/logo_v2.svg
+  logo: assets/mlcommons-logo.svg
   icon:
     repo: fontawesome/brands/github
   palette:
@@ -53,7 +55,6 @@ theme:
 
 plugins:
   - search
-  - include-markdown
 
 markdown_extensions:
   - abbr
@@ -89,10 +90,9 @@ nav:
   - Usage:
       - Run commands: endpoints-cli/usage/runs.md
       - Submission commands: endpoints-cli/usage/submissions.md
-  - Complete reference: endpoints-submission-cli.md
-  - Project:
-      - Contributing: contributing.md
-      - License: license.md
+
+extra_css:
+  - stylesheets/extra.css
 
 extra:
   social:

@@ -1,0 +1,9 @@
+/* The MLCommons wordmark is a black path on a transparent ground, so it is
+   invisible against the indigo header. Render it in white there; the sidebar
+   copy shown on small screens sits on the same primary colour. */
+.md-header__button.md-logo img,
+.md-nav__button.md-logo img {
+  filter: brightness(0) invert(1);
+  height: 1.4rem;
+  width: auto;
+}
