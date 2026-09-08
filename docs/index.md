@@ -65,8 +65,6 @@ walkthrough.
 | [Getting started](endpoints-cli/getting-started.md) | Install, configure and authenticate |
 | [Run commands](endpoints-cli/usage/runs.md) | Every `runs` subcommand with flags and examples |
 | [Submission commands](endpoints-cli/usage/submissions.md) | Every `submissions` subcommand with flags and examples |
-| [CLI to API mapping](endpoints-cli/reference/api-mapping.md) | Which HTTP endpoint each command calls |
-| [Architecture](endpoints-cli/reference/architecture.md) | Module map and command flow diagrams |
 | [Complete reference](endpoints-submission-cli.md) | The combined single-page CLI reference |
 | [Contributing](contributing.md) | How to contribute and the CLA process |
 

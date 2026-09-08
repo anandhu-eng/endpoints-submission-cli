@@ -89,10 +89,7 @@ nav:
   - Usage:
       - Run commands: endpoints-cli/usage/runs.md
       - Submission commands: endpoints-cli/usage/submissions.md
-  - Reference:
-      - CLI to API mapping: endpoints-cli/reference/api-mapping.md
-      - Architecture: endpoints-cli/reference/architecture.md
-      - Complete reference: endpoints-submission-cli.md
+  - Complete reference: endpoints-submission-cli.md
   - Project:
       - Contributing: contributing.md
       - License: license.md

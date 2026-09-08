@@ -65,7 +65,7 @@ endpoints-submission-cli runs create \
 └── runtime_settings.json   # Inference server settings (optional)
 ```
 
-**Rollback behaviour:** if the archive upload fails after the run record has been created, the CLI automatically deletes the run record to leave a clean state. If that delete also fails, the orphaned run ID is printed so it can be cleaned up manually.
+**If the command fails partway:** the CLI cleans up after itself, so a failed upload leaves no half-registered run. If the cleanup itself fails, the run ID is printed — delete it with `runs delete`.
 
 **Example:**
 
