@@ -19,9 +19,6 @@ exclude_docs: |
   *.rst
   _static/
   _build/
-  # Upstream README, kept verbatim in the repo but superseded on the site by
-  # index.md and the usage pages.
-  endpoints-cli/README.md
 
 theme:
   name: material

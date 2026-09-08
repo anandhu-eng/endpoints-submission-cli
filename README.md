@@ -9,23 +9,17 @@ A Python package with two tools for managing MLPerf Endpoints benchmark submissi
 
 ## Installation
 
-**With pip:**
+Requires Python 3.10 or later.
 
 ```bash
 pip install endpoints-submission-cli
 ```
 
-**From source (editable):**
-
 ```bash
-pip install -e ".[dev]"
+endpoints-submission-cli --version
 ```
 
-**With [uv](https://github.com/astral-sh/uv):**
-
-```bash
-uv sync --extra dev
-```
+Contributors working on the tools themselves should see [Development](#development).
 
 ---
 
@@ -128,14 +122,17 @@ endpoints-submission-cli submissions create --help
 
 # submission-checker
 
-CLI tool for validating MLPerf Endpoints submissions against the §9.1 automated compliance checks.
+Validates MLPerf Endpoints submissions against the §9.1 automated compliance
+checks. It ships inside the `endpoints-submission-cli` package and is exposed as
+the `check-submission` subcommand; it also runs automatically as part of
+`submissions create`.
 
 ## Usage
 
 ### Check a submission
 
 ```bash
-submission-checker check /path/to/submission
+endpoints-submission-cli check-submission /path/to/submission
 ```
 
 The tool expects the submission root to contain `systems/` and `pareto/` subdirectories as specified in §8.1.
@@ -152,11 +149,15 @@ The tool expects the submission root to contain `systems/` and `pareto/` subdire
 
 ### Show region boundaries
 
-```bash
-submission-checker regions --max-concurrency 1024
-```
+Region bounds for a declared Maximum Supported Concurrency *M* (§5.5) are
+available through the API:
 
-Prints the concurrency ranges for each region given a declared Maximum Supported Concurrency *M* (§5.5).
+```python
+from submission_checker.models.regions import compute_regions
+
+regions = compute_regions(1024)
+print(regions.low_latency, regions.high_throughput)
+```
 
 ## Required Files in submission structure
 
@@ -242,6 +243,12 @@ The `Report` object also exposes `report.warnings` and serialises cleanly via `r
 ---
 
 ## Development
+
+Install from a clone, in editable mode:
+
+```bash
+pip install -e ".[dev]"                # or: uv sync --extra dev
+```
 
 ```bash
 uv run pytest                          # run all tests
