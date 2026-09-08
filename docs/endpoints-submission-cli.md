@@ -556,7 +556,7 @@ as the base for the `runtime_settings` block in each `point_<N>.yaml`:
 ## Submission folder structure
 
 `submissions create` assembles this structure automatically from run archives.
-The [Submission Checker](../README.md) validates it before the submission is
+The [Submission Checker](submission-checker.md) validates it before the submission is
 registered:
 
 ```

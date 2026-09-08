@@ -126,6 +126,7 @@ endpoints-submission-cli submissions create --help
 
 ---
 
+<!-- md:begin submission-checker -->
 # submission-checker
 
 CLI tool for validating MLPerf Endpoints submissions against the §9.1 automated compliance checks.
@@ -239,6 +240,7 @@ else:
 
 The `Report` object also exposes `report.warnings` and serialises cleanly via `report.model_dump_json()`.
 
+<!-- md:end submission-checker -->
 ---
 
 ## Development

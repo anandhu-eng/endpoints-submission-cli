@@ -8,6 +8,9 @@ build/
 .coverage.*
 htmlcov/
 docs/_build/
+
+# MkDocs build output
+site/
 .uv/
 env/
 *.log

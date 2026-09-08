@@ -1,0 +1,107 @@
+site_name: Endpoints Submission CLI
+site_description: >-
+  Documentation for the MLCommons endpoints-submission-cli and submission-checker
+  tools for managing MLPerf Endpoints benchmark runs and rolling submissions.
+site_url: https://anandhu-eng.github.io/endpoints-submission-cli/
+site_author: MLCommons
+
+repo_url: https://github.com/anandhu-eng/endpoints-submission-cli
+repo_name: anandhu-eng/endpoints-submission-cli
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+site_dir: site
+
+# The Sphinx sources for the submission-checker API reference live in the same
+# directory; they are not part of the MkDocs site.
+exclude_docs: |
+  conf.py
+  *.rst
+  _static/
+  _build/
+
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - toc.follow
+    - content.code.copy
+    - content.action.edit
+    - search.highlight
+    - search.suggest
+
+plugins:
+  - search
+  - include-markdown
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      # GitHub-compatible slugs, so the in-page anchors already written into the
+      # Markdown sources resolve both on github.com and on the rendered site.
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+      separator: "-"
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: index.md
+  - endpoints-submission-cli:
+      - endpoints-cli/README.md
+      - Getting started: endpoints-cli/getting-started.md
+      - Usage:
+          - Run commands: endpoints-cli/usage/runs.md
+          - Submission commands: endpoints-cli/usage/submissions.md
+      - Reference:
+          - CLI to API mapping: endpoints-cli/reference/api-mapping.md
+          - Architecture: endpoints-cli/reference/architecture.md
+      - Complete reference: endpoints-submission-cli.md
+  - submission-checker: submission-checker.md
+  - Project:
+      - Contributing: contributing.md
+      - License: license.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/anandhu-eng/endpoints-submission-cli
+      name: Source on GitHub
